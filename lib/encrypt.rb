@@ -17,4 +17,9 @@ class Encrypt
     "0" * gap + "#{input}"
   end
 
+  def key_array
+    keys = @keys.split(//)
+    integer_keys = keys.map { |key| key.to_i }
+  end
+
 end

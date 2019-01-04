@@ -27,4 +27,11 @@ class EncryptTest < Minitest::Test
 
     assert_equal "00089", encrypt.pad(5,89)
   end
+
+  def test_it_can_create_pairs_of_keys
+    encrypt = Encrypt.new
+
+    assert_equal 5 ,encrypt.key_array.size
+  end
+
 end
