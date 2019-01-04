@@ -9,4 +9,10 @@ class EncryptTest < Minitest::Test
 
     assert_instance_of Encrypt, encrypt
   end
+
+  def test_it_has_attributes
+    encrypt = Encrypt.new
+
+    assert_equal 'a', encrypt.alphabet.first
+  end
 end
