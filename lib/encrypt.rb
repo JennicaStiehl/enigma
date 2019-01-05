@@ -4,12 +4,11 @@ class Encrypt
 
   def initialize
     @alphabet = ('a'..'z').to_a << ' '
-    @keys = get_keys
   end
 
   def get_keys
     rand = rand(99999)
-    @keys = pad(5, rand)
+    keys = pad(5, rand)
   end
 
   def pad(target_size, input)
@@ -18,13 +17,13 @@ class Encrypt
   end
 
   def key_array
-    keys = @keys.split(//)
+    keys = get_keys.split(//)
     integer_keys = keys.map { |key| key.to_i }
   end
 
   def get_key_pairs
     pairs = key_array.each_cons(2).to_a
-    pairs.each { |pair| pair.join.to_i }
+    pairs = pairs.map { |pair| pair.join.to_i }
   end
 
   def today
@@ -33,7 +32,16 @@ class Encrypt
   end
 
   def offsets
-    shifts = (today * today).to_s.slice(-4,4).to_i
+    offsets = (today * today).to_s.slice(-4,4)
+  end
+
+  def shifts
+    shifts = []
+    pairs = get_key_pairs
+    offsets.split(//).each.with_index do |offset, i|
+        shifts << offset.to_i + pairs[i]
+    end
+    shifts
   end
 
 end

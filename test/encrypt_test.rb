@@ -19,7 +19,7 @@ class EncryptTest < Minitest::Test
   def test_it_has_keys
     encrypt = Encrypt.new
 
-    assert_equal 5, encrypt.keys.length
+    assert_equal 5, encrypt.get_keys.length
   end
 
   def test_it_can_pad_an_input
@@ -49,7 +49,13 @@ class EncryptTest < Minitest::Test
   def test_it_can_the_shifts
     encrypt = Encrypt.new
 
-    assert_equal 5561, encrypt.offsets
+    assert_equal "5561", encrypt.offsets
+  end
+
+  def test_it_can_add_keys_to_offsets
+    encrypt = Encrypt.new
+
+    assert_equal [68, 43, 91, 55], encrypt.shifts
   end
 
 end
