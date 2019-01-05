@@ -23,9 +23,4 @@ class OffsetTest < Minitest::Test
     assert_equal "1025", offset.offsets
   end
 
-  # def test_it_can_add_keys_to_shifts
-  #   offset = Offset.new
-  #
-  #   assert_equal [3,27,73,20], offset.get_shifts("02715", "040895")
-  # end
 end

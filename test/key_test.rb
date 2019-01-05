@@ -16,6 +16,12 @@ class KeyTest < Minitest::Test
     assert_equal [], key.keys
   end
 
+  def test_it_can_get_random_number
+    key = Key.new
+
+    assert_equal 5, key.get_keys.to_s.length
+  end
+
   def test_it_can_pad_an_input
     key = Key.new
 
@@ -38,5 +44,12 @@ class KeyTest < Minitest::Test
     key = Key.new
 
     assert_equal [2,27,71,15], key.keys_main("02715")
+  end
+
+  def test_it_can_get_final_keys
+    key = mock
+
+    key.stubs(:keys_main).returns("08756")
+    assert_equal "08756", key.keys_main
   end
 end
