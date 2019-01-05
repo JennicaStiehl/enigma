@@ -9,12 +9,22 @@ class Enigma < Cryptographer
 
   def encrypt(message, keys = get_keys, date = today)
     shifts = get_shifts(keys, date)
-    get_encrypted_message(message, shifts)
+    message = get_encrypted_message(message, shifts)
+    result = {}
+    result[:encryption] = message
+    result[:key] = keys
+    result[:date] = date
+    result
   end
 
   def decrypt(message, keys = get_keys, date = today)
     shifts = get_shifts(keys, date)
-    get_decrypted_message(message, shifts)
+    message = get_decrypted_message(message, shifts)
+    result = {}
+    result[:decryption] = message
+    result[:key] = keys
+    result[:date] = date
+    result
   end
 
   def get_encrypted_message(message, shifts)
