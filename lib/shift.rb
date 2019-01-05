@@ -1,9 +1,11 @@
 require './lib/cryptographer'
 
 class Shift < Cryptographer
-
+  attr_reader   :offsets
+  
   def initialize
     super
+    @offsets = ""
   end
 
   def today
@@ -12,6 +14,6 @@ class Shift < Cryptographer
   end
 
   def offsets(date = today)
-    offsets = (date.to_i * date.to_i).to_s.slice(-4,4)
+    @offsets = (date.to_i * date.to_i).to_s.slice(-4,4)
   end
 end

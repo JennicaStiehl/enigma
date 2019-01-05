@@ -1,13 +1,14 @@
 require './lib/cryptographer'
 
 class Encrypt < Cryptographer
+  attr_reader   :shift
 
   def initialize
     super
   end
 
   def encrypt(message, keys = get_keys, date = today)
-    shifts = shifts(keys, date)
+    shifts = get_shifts(keys, date)
     get_message(message, shifts)
   end
 

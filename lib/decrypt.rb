@@ -5,8 +5,9 @@ class Decrypt < Cryptographer
     def initialize
       super
     end
+
     def decrypt(message, keys = get_keys, date = today)
-      shifts = shifts(keys, date)
+      shifts = get_shifts(keys, date)
       get_message(message, shifts)
     end
 

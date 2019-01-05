@@ -31,6 +31,6 @@ class ShiftTest < Minitest::Test
   def test_it_can_add_keys_to_shifts
     shift = Shift.new
 
-    assert_equal [3,27,73,20], shift.shifts("02715", "040895")
+    assert_equal [3,27,73,20], shift.get_shifts("02715", "040895")
   end
 end
