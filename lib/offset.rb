@@ -9,7 +9,7 @@ class Offset
 
   def today
       t= Date.today
-      today = t.strftime("%m%d%y").to_i
+      t.strftime("%m%d%y").to_i
   end
 
   def get_offsets(date = today)

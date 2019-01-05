@@ -9,7 +9,7 @@ attr_reader   :keys
     if keys.class == String
       key_array = get_key_array(keys)
       get_key_pairs(key_array)
-    else#if keys.class == Integer
+    else
       get_keys
       padded_keys = pad(5, get_keys)
       key_array = get_key_array(padded_keys)
@@ -28,7 +28,7 @@ attr_reader   :keys
 
   def get_key_array(keys)
     keys = keys.split(//)
-    integer_keys = keys.map { |key| key.to_i }
+    keys.map { |key| key.to_i }
   end
 
   def get_key_pairs(key_array)
