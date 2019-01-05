@@ -28,10 +28,28 @@ class EncryptTest < Minitest::Test
     assert_equal "00089", encrypt.pad(5,89)
   end
 
-  def test_it_can_create_pairs_of_keys
+  def test_it_can_create_key_array
     encrypt = Encrypt.new
 
     assert_equal 5 ,encrypt.key_array.size
+  end
+
+  def test_it_can_create_pairs_of_keys
+    encrypt = Encrypt.new
+
+    assert_equal 4, encrypt.get_key_pairs.size
+  end
+
+  def test_it_can_get_todays_date
+    encrypt = Encrypt.new
+
+    assert_equal 10419, encrypt.today
+  end
+
+  def test_it_can_the_shifts
+    encrypt = Encrypt.new
+
+    assert_equal 5561, encrypt.shifts
   end
 
 end

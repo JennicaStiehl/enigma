@@ -22,4 +22,18 @@ class Encrypt
     integer_keys = keys.map { |key| key.to_i }
   end
 
+  def get_key_pairs
+    pairs = key_array.each_cons(2).to_a
+    pairs.each { |pair| pair.join.to_i }
+  end
+
+  def today
+      t= Date.today
+      today = t.strftime("%m%d%y").to_i
+  end
+
+  def shifts
+    shifts = (today * today).to_s.slice(-4,4).to_i
+  end
+
 end
