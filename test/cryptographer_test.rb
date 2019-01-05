@@ -15,6 +15,7 @@ class CryptographerTest < Minitest::Test
 
     assert_equal 27, cryptographer.alphabet.count
   end
+
   def test_it_has_an_alphabet
     cryptographer = Cryptographer.new
 
@@ -45,21 +46,4 @@ class CryptographerTest < Minitest::Test
     assert_equal [2,27,71,15], cryptographer.keys_main("02715")
   end
 
-  def test_it_can_get_todays_date
-    cryptographer = Cryptographer.new
-
-    assert_equal 10519, cryptographer.today
-  end
-
-  def test_it_can_get_the_offsets
-    cryptographer = Cryptographer.new
-
-    assert_equal "1025", cryptographer.offsets(40895)
-  end
-
-  def test_it_can_add_keys_to_shifts
-    cryptographer = Cryptographer.new
-
-    assert_equal [3,27,73,20], cryptographer.shifts("02715", "040895")
-  end
 end
