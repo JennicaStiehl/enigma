@@ -12,13 +12,61 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_encrypt
     enigma = Enigma.new
-
-    assert_equal 'keder ohulw', enigma.encrypt("hello world", "02715", "040895")
+    expected =
+      {
+        encryption: "keder ohulw",
+        key: "02715",
+        date: "040895"
+      }
+    assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
 
   def test_it_can_decrypt
     enigma = Enigma.new
+    expected =
+      {
+        decryption: "hello world",
+        key: "02715",
+        date: "040895"
+      }
+    assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
+  end
 
-    assert_equal 'hello world', enigma.decrypt("keder ohulw", "02715", "040895")
+  def test_encrypt_a_message_with_a_key_uses_todays_date
+    enigma = Enigma.new
+
+    expected =
+      {
+        encryption: "shhazcsdbo ",
+        key: "02715",
+        date: "010519"
+      }
+    assert_equal expected, encrypted = enigma.encrypt("hello world", "02715")
+  end
+
+  def test_it_can_decrypt_a_message_with_a_key_uses_todays_date
+    enigma = Enigma.new
+
+    expected =
+      {
+        decryption: " bhpgxssji ",
+        key: "02715",
+        date: "010519"
+      }
+    assert_equal expected, enigma.decrypt("keder ohulw", "02715")
+
+  end
+
+  def test_it_can_encrypt_a_message_generates_random_key_and_uses_todays_date
+skip
+    enigma = Enigma.new
+
+    expected = enigma.stubs
+      ({
+        encryption: "pnyfwiiizuq",
+        key:"02715",
+        date: "010519"
+      })
+    assert_equal expected, enigma.encrypt("hello world")
   end
 end

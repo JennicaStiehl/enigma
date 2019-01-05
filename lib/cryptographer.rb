@@ -11,7 +11,7 @@ class Cryptographer
     @shifts = []
   end
 
-  def get_shifts(keys = @key.get_keys, date = today)
+  def get_shifts(keys = @key.get_keys, date = @offset.today)
     offsets = @offset.get_offsets(date)
     pairs = @key.keys_main(keys)
     offsets.split(//).each.with_index do |offset, i|
