@@ -7,23 +7,23 @@ class Enigma < Cryptographer
     super
   end
 
-  def encrypt(message, keys = get_keys, date = today)
+  def encrypt(message, keys = @key.get_keys, date = @offset.today)
     shifts = get_shifts(keys, date)
     message = get_encrypted_message(message, shifts)
     result = {}
     result[:encryption] = message
-    result[:key] = keys
-    result[:date] = date
+    result[:key] = @key.pad(5,keys.to_s)
+    result[:date] = @key.pad(6,date.to_s)
     result
   end
 
-  def decrypt(message, keys = get_keys, date = today)
+  def decrypt(message, keys = @key.get_keys, date = @offset.today)
     shifts = get_shifts(keys, date)
     message = get_decrypted_message(message, shifts)
     result = {}
     result[:decryption] = message
-    result[:key] = keys
-    result[:date] = date
+    result[:key] = @key.pad(5,keys.to_s)
+    result[:date] = @key.pad(6,date.to_s)
     result
   end
 
