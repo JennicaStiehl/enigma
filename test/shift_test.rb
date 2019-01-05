@@ -17,20 +17,20 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_can_get_todays_date
-    cryptographer = Cryptographer.new
+    shift = Shift.new
 
-    assert_equal 10519, cryptographer.today
+    assert_equal 10519, shift.today
   end
 
   def test_it_can_get_the_offsets
-    cryptographer = Cryptographer.new
+    shift = Shift.new
 
-    assert_equal "1025", cryptographer.offsets(40895)
+    assert_equal "1025", shift.offsets(40895)
   end
 
   def test_it_can_add_keys_to_shifts
-    cryptographer = Cryptographer.new
+    shift = Shift.new
 
-    assert_equal [3,27,73,20], cryptographer.shifts("02715", "040895")
+    assert_equal [3,27,73,20], shift.shifts("02715", "040895")
   end
 end
