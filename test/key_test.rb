@@ -10,6 +10,11 @@ class KeyTest < Minitest::Test
     assert_instance_of Key, key
   end
 
+  def test_it_starts_without_keys
+    key = Key.new
+
+    assert_equal [], key.keys
+  end
 
   def test_it_can_pad_an_input
     key = Key.new
