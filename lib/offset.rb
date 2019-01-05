@@ -1,6 +1,5 @@
-require './lib/cryptographer'
 
-class Offset < Cryptographer
+class Offset
   attr_reader   :offsets
 
   def initialize

@@ -22,9 +22,9 @@ class CryptographerTest < Minitest::Test
     assert_equal 'a', cryptographer.alphabet.first
   end
 
-  def test_it_starts_without_shifts
+  def test_it_can_add_keys_to_offsets_to_get_shifts
     cryptographer = Cryptographer.new
 
-    assert_equal [], cryptographer.shifts
+    assert_equal [3,27,73,20], cryptographer.get_shifts("02715", "040895")
   end
 end
