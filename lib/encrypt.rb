@@ -32,7 +32,7 @@ class Encrypt
       today = t.strftime("%m%d%y").to_i
   end
 
-  def shifts
+  def offsets
     shifts = (today * today).to_s.slice(-4,4).to_i
   end
 

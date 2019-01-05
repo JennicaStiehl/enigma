@@ -49,7 +49,7 @@ class EncryptTest < Minitest::Test
   def test_it_can_the_shifts
     encrypt = Encrypt.new
 
-    assert_equal 5561, encrypt.shifts
+    assert_equal 5561, encrypt.offsets
   end
 
 end
