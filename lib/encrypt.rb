@@ -11,7 +11,7 @@ handle.close
 enigma = Enigma.new
 key_1 = "82648"
 date_1 = "240818"
-
+# binding.pry
 outgoing_text_1 = "Created #{ARGV[1]} with the key #{key_1} and date #{date_1}"
 outgoing_text_3 = enigma.encrypt(incoming_text, key_1, date_1)
 # outgoing_text_2 = "<br>"
