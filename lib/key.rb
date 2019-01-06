@@ -8,7 +8,7 @@ attr_reader   :keys
   def keys_main(keys = get_keys)
     if keys.class == String
       key_array = get_key_array(keys)
-      get_key_pairs(key_array)
+      @keys = get_key_pairs(key_array)
     else
       get_keys
       padded_keys = pad(5, get_keys)
