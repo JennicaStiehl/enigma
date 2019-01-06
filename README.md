@@ -9,5 +9,5 @@ Project is broken into logical components consisting of at least 4 classes that 
 ##Test Driven Development - 4: Well Above Expectations
 All test names clearly communicate the purpose of the test. At least one test implements mocks and stubs. Test coverage metrics show 100% coverage
 
-##Version Control - 4: Well Above Expectations
-At least 40 commits. At least 15 pull requests that are named and documented to clearly communicate the purpose of the pull request. No commits include multiple pieces of functionality. No commit message is ambiguous.
+##Version Control - 3: Meets Expectations
+At least 30 commits. At least 10 pull requests. No more than 3 commits include multiple pieces of functionality.

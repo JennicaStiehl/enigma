@@ -1,1 +1,3 @@
 echo "coverage" >> .gitignore
+echo Gemfile >> .gitignore
+echo Rakefile >> .gitignore
