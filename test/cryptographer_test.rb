@@ -27,4 +27,11 @@ class CryptographerTest < Minitest::Test
 
     assert_equal [3,27,73,20], cryptographer.get_shifts("02715", "040895")
   end
+
+  def test_it_can_create_special_characters_array
+    cryptographer = Cryptographer.new
+
+    expected = (["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "[".."`"])
+    assert_equal expected, cryptographer.special_characters
+  end
 end
