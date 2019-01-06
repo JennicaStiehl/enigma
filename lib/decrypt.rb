@@ -11,7 +11,7 @@ handle.close
 enigma = Enigma.new
 
 outgoing_text_1 = "Created #{ARGV[1]} with the key #{ARGV[2]} and date #{ARGV[3]}"
-outgoing_text_3 = enigma.decrypt(incoming_text, key_1, date_1)
+outgoing_text_3 = enigma.decrypt(incoming_text, ARGV[2], ARGV[3])
 
 writer = File.open(ARGV[1], 'w')
 writer.write("#{outgoing_text_1} #{outgoing_text_3}")
