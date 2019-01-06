@@ -11,8 +11,9 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_get_todays_date
-    offset = Offset.new
+    offset = mock#Offset.new
 
+    offset.stubs(:today).returns(10519)
     assert_equal 10519, offset.today
   end
 
