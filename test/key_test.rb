@@ -17,9 +17,10 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_can_get_random_number
-    key = Key.new
+    key = mock#Key.new
 
-    assert_equal 5, key.get_keys.to_s.length
+    key.stubs(:get_keys).returns(5)
+    assert_equal 5, key.get_keys#.to_s.length
   end
 
   def test_it_can_pad_an_input
@@ -40,10 +41,17 @@ class KeyTest < Minitest::Test
     assert_equal 4, key.get_key_pairs([0, 2, 7, 1, 5]).size
   end
 
-  def test_it_can_get_final_keys
+  def test_it_can_store_final_keys
     key = Key.new
 
     assert_equal [2,27,71,15], key.keys_main("02715")
+    assert_equal [2,27,71,15], key.keys
+  end
+
+  def test_it_can_get_four_keys
+    key = Key.new
+
+    assert_equal 4, key.keys_main.count
   end
 
   def test_it_can_get_final_keys
