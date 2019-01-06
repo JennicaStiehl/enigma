@@ -3,7 +3,10 @@ require './lib/offset'
 
 class Cryptographer
   attr_reader   :alphabet,
-                :special_characters
+                :special_characters,
+                :key,
+                :offset,
+                :shifts
 
   def initialize
     @alphabet = ('a'..'z').to_a << ' '
