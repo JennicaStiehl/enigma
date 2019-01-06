@@ -29,20 +29,24 @@ class Enigma < Cryptographer
 
   def get_encrypted_message(message, shifts)
     new_message = []
-      new_message = message.split(//).map.with_index do |letter, i|
+    new_message = message.split(//).map.with_index do |letter, i|
+      if @alphabet.include?(letter)
         num_to_rotate = @alphabet.index(letter) + shifts.first
         shifts.rotate!(1)
         @alphabet.rotate(num_to_rotate).first
+      end
     end
     new_message.join
   end
 
   def get_decrypted_message(message, shifts)
     new_message = []
-      new_message = message.split(//).map.with_index do |letter, i|
+    new_message = message.split(//).map.with_index do |letter, i|
+      if @alphabet.include?(letter)
         num_to_rotate = @alphabet.index(letter) - shifts.first
         shifts.rotate!(1)
         @alphabet.rotate(num_to_rotate).first
+      end
     end
     new_message.join
   end
