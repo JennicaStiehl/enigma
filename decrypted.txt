@@ -1,0 +1,1 @@
+Created decrypted.txt with the key 82648 and date 240818 {:decryption=>"oei bdhlkczemtmkqxagtiaoxtplxkmex iua lhqehgbnkyvpaplnorunju knghefgaaal", :key=>"02715", :date=>"040895"}
