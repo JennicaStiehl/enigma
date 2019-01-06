@@ -84,4 +84,8 @@ class Enigma < Cryptographer
     end
   end
 
+  def crack(message, date = @offset.today, keys = @key.get_keys)
+    decrypt(message, keys, date)
+  end
+
 end

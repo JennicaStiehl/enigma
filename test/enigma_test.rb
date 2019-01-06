@@ -172,13 +172,12 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_crack_an_encryption_with_a_date
-    skip
     enigma = Enigma.new
     expected = {
                 decryption: "hello world",
                 date: "040895",
                 key: "02715"
               }
-    assert_equal expected, enigma.crack("keder ohulw", "040895")
+    assert_equal expected, enigma.crack("keder ohulw", "040895", "02715")
   end
 end
