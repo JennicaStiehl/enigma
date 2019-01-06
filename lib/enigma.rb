@@ -29,32 +29,14 @@ class Enigma < Cryptographer
 
   def get_encrypted_message(message, shifts)
     new_message = message.downcase.split(//).map.with_index do |letter, i|
-      if @alphabet.include?(letter)
-        num_to_rotate = @alphabet.index(letter) + shifts.first
-        shifts.rotate!(1)
-        @alphabet.rotate(num_to_rotate).first
-      elsif @special_characters.include?(letter) && i != 0
-        shifts.rotate!(1)
-        letter
-      else
-        letter
-      end
+      rotate_for_encrypt(letter, i, shifts)
     end
     new_message.join
   end
 
   def get_decrypted_message(message, shifts)
     new_message = message.downcase.split(//).map.with_index do |letter, i|
-      if @alphabet.include?(letter)
-        num_to_rotate = @alphabet.index(letter) - shifts.first
-        shifts.rotate!(1)
-        @alphabet.rotate(num_to_rotate).first
-      elsif @special_characters.include?(letter) && i != 0
-        shifts.rotate!(1)
-        letter
-      else
-        letter
-      end
+      rotate_for_decrypt(letter, i, shifts)
     end
     new_message.join
   end
@@ -66,6 +48,40 @@ class Enigma < Cryptographer
       shifts = get_shifts(keys, date)
     end
     shifts
+  end
+
+  def check_alphabet(letter)
+    @alphabet.include?(letter)
+  end
+
+  def check_special_characters(letter)
+    @special_characters.include?(letter)
+  end
+
+  def rotate_for_encrypt(letter, i, shifts)
+    if check_alphabet(letter)
+      num_to_rotate = @alphabet.index(letter) + shifts.first
+      shifts.rotate!(1)
+      @alphabet.rotate(num_to_rotate).first
+    elsif check_special_characters(letter) && i != 0
+      shifts.rotate!(1)
+      letter
+    else
+      letter
+    end
+  end
+
+  def rotate_for_decrypt(letter, i, shifts)
+    if check_alphabet(letter)
+      num_to_rotate = @alphabet.index(letter) - shifts.first
+      shifts.rotate!(1)
+      @alphabet.rotate(num_to_rotate).first
+    elsif check_special_characters(letter) && i != 0
+      shifts.rotate!(1)
+      letter
+    else
+      letter
+    end
   end
 
 end
