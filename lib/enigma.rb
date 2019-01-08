@@ -10,21 +10,19 @@ class Enigma < Cryptographer
   def encrypt(message, keys = @key.get_keys, date = @offset.today)
     check_shifts(keys, date)
     message = get_encrypted_message(message, @shifts)
-    result = {}
-    result[:encryption] = message
-    result[:key] = @key.pad(5,keys.to_s)
-    result[:date] = @key.pad(6,date.to_s)
-    result
+    @encrypt[:encryption] = message
+    @encrypt[:key] = @key.pad(5,keys.to_s)
+    @encrypt[:date] = @key.pad(6,date.to_s)
+    @encrypt
   end
 
   def decrypt(message, keys = @key.get_keys, date = @offset.today)
     check_shifts(keys, date)
     message = get_decrypted_message(message, shifts)
-    result = {}
-    result[:decryption] = message
-    result[:key] = @key.pad(5,keys.to_s)
-    result[:date] = @key.pad(6,date.to_s)
-    result
+    @decrypt[:decryption] = message
+    @decrypt[:key] = @key.pad(5,keys.to_s)
+    @decrypt[:date] = @key.pad(6,date.to_s)
+    @decrypt
   end
 
   def get_encrypted_message(message, shifts)
@@ -60,28 +58,39 @@ class Enigma < Cryptographer
 
   def rotate_for_encrypt(letter, i, shifts)
     if check_alphabet(letter)
-      num_to_rotate = @alphabet.index(letter) + shifts.first
-      shifts.rotate!(1)
-      @alphabet.rotate(num_to_rotate).first
+      rotate_encrypt_path_1(letter)
     elsif check_special_characters(letter) && i != 0
-      shifts.rotate!(1)
-      letter
+      rotate_encrypt_or_decrypt_path_2(letter)
     else
       letter
     end
   end
 
+  def rotate_encrypt_path_1(letter)
+    num_to_rotate = @alphabet.index(letter) + shifts.first
+    shifts.rotate!(1)
+    @alphabet.rotate(num_to_rotate).first
+  end
+
+  def rotate_encrypt_or_decrypt_path_2(letter)
+    shifts.rotate!(1)
+    letter
+  end
+
   def rotate_for_decrypt(letter, i, shifts)
     if check_alphabet(letter)
-      num_to_rotate = @alphabet.index(letter) - shifts.first
-      shifts.rotate!(1)
-      @alphabet.rotate(num_to_rotate).first
+      rotate_decrypt_path_1(letter)
     elsif check_special_characters(letter) && i != 0
-      shifts.rotate!(1)
-      letter
+      rotate_encrypt_or_decrypt_path_2(letter)
     else
       letter
     end
+  end
+
+  def rotate_decrypt_path_1(letter)
+    num_to_rotate = @alphabet.index(letter) - shifts.first
+    shifts.rotate!(1)
+    @alphabet.rotate(num_to_rotate).first
   end
 
   def crack(message, date = @offset.today, keys = @key.get_keys)

@@ -6,7 +6,9 @@ class Cryptographer
                 :special_characters,
                 :key,
                 :offset,
-                :shifts
+                :shifts,
+                :encrypt,
+                :decrypt
 
   def initialize
     @alphabet = ('a'..'z').to_a << ' '
@@ -14,6 +16,8 @@ class Cryptographer
     @key = Key.new
     @offset = Offset.new
     @shifts = []
+    @encrypt = {}
+    @decrypt = {}
   end
 
   def get_shifts(keys = @key.get_keys, date = @offset.today)

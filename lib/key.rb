@@ -7,14 +7,23 @@ attr_reader   :keys
 
   def keys_main(keys = get_keys)
     if keys.class == String
-      key_array = get_key_array(keys)
-      @keys = get_key_pairs(key_array)
+      key_path_1(keys)
     else
-      get_keys
-      padded_keys = pad(5, get_keys)
-      key_array = get_key_array(padded_keys)
-      @keys = get_key_pairs(key_array)
+      key_path_2(keys)
     end
+    @keys
+  end
+
+  def key_path_1(keys = get_keys)
+    key_array = get_key_array(keys)
+    @keys = get_key_pairs(key_array)
+  end
+
+  def key_path_2(keys = get_keys)
+    get_keys
+    padded_keys = pad(5, get_keys)
+    key_array = get_key_array(padded_keys)
+    @keys = get_key_pairs(key_array)
   end
 
   def get_keys
